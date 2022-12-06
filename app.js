@@ -10,7 +10,7 @@ require("dotenv").config();// dotenv file
 
 
 
-const { PORT, MONGODB_URI } = process.env;
+const { PORT, MONGODB_URI } = process.env; // environment variables, like port and mongodb
 
 
 
@@ -21,6 +21,11 @@ app.get("/", (req, res) =>{
 
 app.get("/login", (req, res) =>{
     res.render("login"); // file name only. it will be rendered onto the page 
+});
+
+/////////////////////////////////////////
+app.get("/nav", (req,res)=>{
+    res.render("common/navbar")
 });
 
 
