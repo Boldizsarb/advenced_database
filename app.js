@@ -24,9 +24,6 @@ app.get("/login", (req, res) =>{
 });
 
 /////////////////////////////////////////
-app.get("/nav", (req,res)=>{
-    res.render("common/navbar")
-});
 
 
 
