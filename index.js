@@ -6,6 +6,9 @@ app.set("view engine", "ejs"); // seting up ejs views enginge
 app.use(express.static("static"));  // static elements whereabouts
 app.use("/static", express.static('./static/'));
 
+require("dotenv").config();// dotenv file 
+const { PORT, MONGODB_URI } = process.env;
+
 
 
 
@@ -13,7 +16,12 @@ app.use("/static", express.static('./static/'));
 // index page
 app.get("/", (req, res) =>{
     res.render("index"); // file name only. it will be rendered onto the page 
-    });
+});
 
 
-    app.listen(3000, ()=>{console.log("Server started!")});
+app.listen(PORT, () => {
+    console.log(
+      `Example app listening at http://localhost:${PORT}`,
+      chalk.green("✓")
+    );
+});
