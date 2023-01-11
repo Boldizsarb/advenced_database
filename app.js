@@ -6,10 +6,8 @@ app.set("view engine", "ejs"); // seting up ejs views enginge
 app.use(express.static("static"));  // static elements whereabouts
 app.use("/static", express.static('./static/'));
 
+
 require("dotenv").config();// dotenv file 
-
-
-
 const { PORT, MONGODB_URI } = process.env; // environment variables, like port and mongodb
 
 
@@ -27,7 +25,7 @@ app.get("/login", (req, res) =>{
 
 
 
-app.listen(PORT, () => {
+app.listen(PORT, () => { // listener
     console.log(
       `App listening at http://localhost:${PORT}`,
       chalk.green("✓")
