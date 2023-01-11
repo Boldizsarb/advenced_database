@@ -10,11 +10,11 @@ async function main(){
         await client.connect();
         const db = client.db();
 
-        await listDatabases(client); // printing the databases! 
+        //await listDatabases(client); // printing the databases! 
 
         //await createCollection(client,"test_two") // creating collection 
 
-        await listCollections(client,"testhere") // printing the collections
+        //await listCollections(client,"testhere") // printing the collections
 
        // await createDatabase(client,"testdatabase", "testcollection") // creating database working 
 
@@ -22,7 +22,7 @@ async function main(){
 
         //await createMultipleDocuments(client,"testhere","test_two", [{name: "test", price: 100, bedrooms: 2, bathrooms: 1}, {name: "test", price: 100, bedrooms: 2, bathrooms: 1}])
 
-        // agregation comes here 
+        await findDocumentByName(client,"testhere","test_two", "test")
 
 
 
@@ -55,18 +55,19 @@ async function createCollection(client,collectionName){
     console.log(`Created collection with the name '${result.collectionName}'`);
 
 }
+
+async function createDatabase(client,databaseName,collectionName){
+    
+    const db = await client.db(databaseName);
+    await db.createCollection(collectionName);
+    console.log(`Created database with the name '${db.databaseName}' with the '${db.collectionName}' Collection name!`);
+}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////// finding //////////////////////////////////////////////////////////
 async function listCollections(client,databaseName){
     const databaseList = await client.db(databaseName).listCollections().toArray();
     console.log("Collections:");
     databaseList.forEach(db => console.log(` - ${db.name}`));  //printing all the collections 
-}
-
-async function createDatabase(client,databaseName,collectionName){
-    
-        const db = await client.db(databaseName);
-        await db.createCollection(collectionName);
-        console.log(`Created database with the name '${db.databaseName}' with the '${db.collectionName}' Collection name!`);
 }
 
 async function listDatabases(client){
@@ -74,4 +75,25 @@ async function listDatabases(client){
     console.log("Databases:");
     databaseList.databases.forEach(db => console.log(` - ${db.name}`));  //printing all the databases 
 
+}
+
+async function findDocumentByName(client,databaseName, collectionName, nameOfDocument){   // one only!!!! 
+    const result = await client.db(databaseName).collection(collectionName).findOne({name: nameOfDocument});
+    if (result){
+        console.log(`Found a listing in the collection with the name '${nameOfDocument}':`);
+        console.log(result);
+    }else{
+        console.log(`No listings found with the name '${nameOfDocument}'`);
+    }
+}
+
+async function findDocumentByPrice(client,databaseName, collectionName,
+    minimumNumberOfBedroms =0, maximummumNumberOfBathrooms =Number.MAX_SAFE_INTEGER, priceOfDocument){      // multiple
+          
+        const cursor = await client.db(databaseName).collection(collectionName).find({price:priceOfDocument
+        ,bedrooms: {$gte: minimumNumberOfBedroms}}).sort()
+        if (cursor){
+            console.log(`Found a listing in the collection with the name '${priceOfDocument}':`);
+            console.log(cursor);    
+        }
 }
