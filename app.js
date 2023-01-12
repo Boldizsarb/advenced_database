@@ -13,7 +13,7 @@ require("dotenv").config();// dotenv file
 const { PORT, MONGODB_URI } = process.env; // environment variables, like port and mongodb
 
 const User = require("./models/User"); // user
-const userController = require("./controllers/user"); // user
+//const userController = require("./controllers/user"); // user
 const bodyParser = require("body-parser"); // body parser
 
 
