@@ -16,13 +16,13 @@ async function main(){
 
         //await listCollections(client,"testhere") // printing the collections
 
-       // await createDatabase(client,"testdatabase", "testcollection") // creating database working 
+        //await createDatabase(client,"database", "users") // creating database working 
 
         //await createDocument(client,"testhere","test_two", {name: "test", price: 100, bedrooms: 2, bathrooms: 1}) // one document only
 
         //await createMultipleDocuments(client,"testhere","test_two", [{name: "test", price: 100, bedrooms: 2, bathrooms: 1}, {name: "test", price: 100, bedrooms: 2, bathrooms: 1}])
 
-        await findDocumentByName(client,"testhere","test_two", "test")
+        //await findDocumentByName(client,"testhere","test_two", "test")
 
 
 
