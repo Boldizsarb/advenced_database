@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="header">
+        <%- include('common/header'); -%> <style>#header {height: 10vh;}</style>
+    </div>
+      <% if(!user) { %> <h2>Login or Register on the top right ;) </h2> <% } %> 
+      <% if(user){ %> 
+    
+      <p> user id: <%=user.id%></p>
+    <form method="POST" action="/addcard">
+        <label for="front">Front</label>
+        <input type="text" name="front" id="front" placeholder="Front of the Card">
+
+        <label for="back">Back</label>
+        <input type="text" name="back" id="back" placeholder="Back of the Card">
+
+        <input type="hidden" name="userId" id="userId" value= <%=user.id%>>
+        
+        <input type="submit" value="Create">
+    </form>
+    <% } %>
+
+
+
+</body>
+</html>

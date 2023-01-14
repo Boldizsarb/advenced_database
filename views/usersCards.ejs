@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My cards</title>
+    <link rel="stylesheet" type="text/css" href="usersCards.css">
+
+</head>
+<body>
+    <div id="header">
+        <%- include('common/header'); -%> <style>#header {height: 10vh;}</style>
+    </div>
+    <div class="card-container">
+        <% cards.forEach(card => { %>
+            <div class="card">
+                <div class="card-front">
+                    <%= card.front %>
+                </div>
+                <div class="card-back">
+                    <%= card.back %>
+                </div>
+                <div class="cardId" >
+                    <%= card.id %>
+                </div>
+                <div class="card-buttons">
+                    <a href="#" class="more-button">Edit</a>
+                    <a href="/usersCards/delete/<%= card.id %>" class="delete-button">Delete</a>
+                </div>
+            </div>
+        <%  }); %>
+    </div>
+    
+</body>
+</html>
+<script>
+
+const cards = document.querySelectorAll('.card');
+
+cards.forEach(card => {
+    card.addEventListener('click', function() {
+        card.classList.toggle('flipped');
+    });
+});
+
+</script>
+<style>
+   body{color: black;}
+</style>

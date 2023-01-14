@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <h1>home page </h1>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-    <div>
-        <%- include ('common/navbar.ejs') %>
-    </div>
-    
-    
+  <div id="header">
+    <%- include('common/header'); -%> <style>#header {height: 10vh;}</style>
+  </div>
+  <% if(!user) { %> <h2>Login or Register on the top right ;) </h2> <% } %> 
+
+  <p> user id: <%=user.id%></p>
+  
 </body>
 </html>
+
+<style>
+  h2{ 
+    padding: 5vh;
+    text-align: center;
+  }
+</style>
