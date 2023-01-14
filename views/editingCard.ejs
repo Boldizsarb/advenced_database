@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="header">
+        <%- include('common/header'); -%> <style>#header {height: 10vh;}</style>
+    </div>
+    <h1>Edit Card -></h1>
+    <form action="" method="POST">
+        <label for="front">Front:</label>
+        <input type="text" name="front" id="front" value="<%=cards.front%>" required >
+
+        <label for="back">Back:</label>
+        <input type="text" name="back" id="back" value="<%=cards.back%>" required >
+        
+        <button type="submit" >Edit</button>
+
+    </form>
+</body>
+</html>

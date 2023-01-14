@@ -54,3 +54,35 @@ exports.delete = async(req,res)=>{
         });
     }
 }
+
+exports.edit = async(req,res)=>{
+    const id = req.params.id;
+    try{
+            const cards = await Card.findById(id);
+            res.render("editingCard", {cards: cards, id:id})
+
+
+    }catch(e){
+        console.log(e.message);
+        return res.status(400).send({
+            message: JSON.parse(e),
+        
+        });
+    }
+}
+
+exports.update = async(req,res)=>{
+    const id = req.params.id;
+    try{
+            const cards = await Card.updateOne({_id: id}, req.body)
+            res.redirect("/usersCards")
+
+
+    }catch(e){
+        console.log(e.message);
+        return res.status(400).send({
+            message: JSON.parse(e),
+        
+        });
+    }
+}

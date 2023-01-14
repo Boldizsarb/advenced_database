@@ -70,14 +70,16 @@ const authMiddleware = async (req, res, next) => {
 
 //app.get("/", homeController.list);
 
-app.get("/", (req, res) => {
-  res.render('index', { errors: {} })    
-});
-
 app.get("/usersCards", CardController.list);
 app.get("/usersCards/delete/:id", CardController.delete);
 
+app.get("/usersCards/update/:id", CardController.edit);
+app.post("/usersCards/update/:id", CardController.update);
 
+
+app.get("/", (req, res) => {
+  res.render('index', { errors: {} })    
+});
 
 
 app.get("/logout", async (req, res) => {
