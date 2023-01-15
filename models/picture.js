@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const imageSchema = new mongoose.Schema({
     name: String,
-   
+    userId:{type: String, required: [true, "User Id needed. Login first!"]},  //needed
     img:
     {
         data: Buffer,
@@ -15,4 +15,5 @@ const imageSchema = new mongoose.Schema({
  
 module.exports = new mongoose.model('imagges', imageSchema);
 
-// desc: String,
+// desc: String,// taken out 
+// 
