@@ -1,31 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-    <link rel="stylesheet" type="text/css" href="forCards.css">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div id="header">
-        <%- include('common/header'); -%> <style>#header {height: 10vh;}</style>
-    </div>
-    <h1>Edit Card -></h1>
-    <form action="" method="POST">
-        <label for="front">Front:</label>
-        <input type="text" name="front" id="front" value="<%=cards.front%>" rows="2" required >
-
-        <label for="back">Back:</label>
-        <input type="text" name="back" id="back" value="<%=cards.back%>" rows="3" required >
-        
-        <button type="submit" >Edit</button>
-
-    </form>
-</body>
-</html>
-<style>
-    form {
+form {
     width: 90%;
     max-width: 600px;
     margin: 0 auto;
@@ -75,7 +48,7 @@ input[type="text"]:hover {
 }
 
 /* Submit button styles */
-button {
+input[type="submit"] {
     background-color: #ffa600; /* change to orange color */
     color: white;
     padding: 12px 20px;
@@ -89,9 +62,8 @@ button {
     transition: all 0.2s ease-in-out; 
 }
 
-button[type="submit"]:hover {
+input[type="submit"]:hover {
     background-color: #ff9100; /* change to darker orange color */
     transform: scale(1.1); /* Increase size of button on hover */
     box-shadow: 0px 0px 15px #ccc;
 }
-</style>

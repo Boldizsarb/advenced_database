@@ -31,7 +31,7 @@ const getImages = (req, res) => {
 const postImage = (req, res, next) => {
   let obj = {
       name: req.body.name,
-      desc: req.body.desc,
+      //desc: req.body.desc,
       img: {
           data: fs.readFileSync(path.join(__dirname + '/../uploads/' + req.file.filename)),
           contentType: 'image/png'
