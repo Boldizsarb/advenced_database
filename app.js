@@ -40,6 +40,8 @@ mongoose.connection.on("error", (err) => {
   process.exit();
 });
 
+
+
 /***
  * We are applying our middlewear
  */
@@ -67,6 +69,17 @@ const authMiddleware = async (req, res, next) => {
   }
   next()
 }
+
+// images
+
+const router = express.Router();
+const imageController = require('./controllers/pictures');
+const { upload } = imageController;
+app.get('/image', imageController.getImages);
+
+app.post('/image', upload.single('image'), imageController.postImage);
+
+module.exports = router;
 
 //app.get("/", homeController.list);
 
