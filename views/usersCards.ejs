@@ -6,6 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My cards</title>
     <link rel="stylesheet" type="text/css" href="usersCards.css">
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/4.5/examples/album/"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
 
 </head>
 <body>
@@ -31,6 +41,65 @@
             </div>
         <%  }); %>
     </div>
+    ---------------------------------------------------------------
+    <div class="row col-md-12 col-md-offset-2 custyle mx-auto">
+    
+    
+    
+        <nav aria-label="Page navigation example">
+       
+       
+       
+          <ul class="pagination">
+           
+  
+            <% if (currentPage === 1) { %>
+              
+              <li class="page-item disabled"><a class="page-link" href="#">First</a></li>     
+            <% } %>  
+            <% if (currentPage > 1) { 
+                %>
+                <li class="page-item"><a class="page-link" href="/usersCards">First</a></li>
+            <% } %>  
+            
+            <% if (currentPage >= 1) { %>   
+              <li class="page-item"><a class="page-link" href="/usersCards?page=<%= currentPage === numberOfPages ? currentPage: currentPage + 1 %>"><%= currentPage === numberOfPages ?  currentPage: currentPage + 1 %></a></li>
+
+              
+              <% } else if (currentPage === 2) { %>
+                <li class="page-item"><a class="page-link" href="/usersCards?page=<%= currentPage === numberOfPages ? currentPage: currentPage + 1 %>"><%= currentPage === numberOfPages ?  currentPage: currentPage + 1 %></a></li>
+              <li class="page-item "><a class="page-link" href="/usersCards?page=<%= currentPage === numberOfPages ? currentPage  :  currentPage + 2 %>"><%= currentPage === numberOfPages ? currentPage  :  currentPage + 2 %></a></li>
+         
+
+              <li class="page-item"><a class="page-link" href="/usersCards?page=<%= currentPage === numberOfPages ? currentPage  :  currentPage + 3 %>"><%= currentPage === numberOfPages ? currentPage :  currentPage + 3 %></a></li>
+              <% }else {  %>
+              <li class="page-item"><a class="page-link" href="/usersCards?page=<%= currentPage === numberOfPages ? currentPage - 10 :  currentPage + 1 %>"><%= currentPage === numberOfPages ? currentPage - 10 :  currentPage + 1 %></a></li>
+              <li class="page-item"><a class="page-link" href="/usersCards?page=<%= currentPage === numberOfPages ? currentPage - 9 :  currentPage + 2 %>"><%= currentPage === numberOfPages ? currentPage - 9 :  currentPage + 2 %></a></li>
+              <li class="page-item"><a class="page-link" href="/usersCards?page=<%= currentPage === numberOfPages ? currentPage - 8 :  currentPage + 3 %>"><%= currentPage === numberOfPages ? currentPage - 8 :  currentPage + 3 %></a></li>
+              <li class="page-item"><a class="page-link" href="/usersCards?page=<%= currentPage === numberOfPages ? currentPage - 7 :  currentPage + 4 %>"><%= currentPage === numberOfPages ? currentPage - 7 :  currentPage + 4 %></a></li>
+              <li class="page-item"><a class="page-link" href="/usersCards?page=<%= currentPage === numberOfPages ? currentPage - 6 :  currentPage + 5 %>"><%= currentPage === numberOfPages ? currentPage - 6 :  currentPage + 5 %></a></li>
+              <li class="page-item"><a class="page-link" href="/usersCards?page=<%= currentPage === numberOfPages ? currentPage - 5 :  currentPage + 6 %>"><%= currentPage === numberOfPages ? currentPage - 5 :  currentPage + 6 %></a></li>
+              <li class="page-item"><a class="page-link" href="/usersCards?page=<%= currentPage === numberOfPages ? currentPage - 4 :  currentPage + 7 %>"><%= currentPage === numberOfPages ? currentPage - 4 :  currentPage + 7 %></a></li>
+              <li class="page-item"><a class="page-link" href="/usersCards?page=<%= currentPage === numberOfPages ? currentPage - 3 :  currentPage + 8 %>"><%= currentPage === numberOfPages ? currentPage - 3 :  currentPage + 8 %></a></li>
+              <li class="page-item"><a class="page-link" href="/usersCards?page=<%= currentPage === numberOfPages ? currentPage - 2 :  currentPage + 9 %>"><%= currentPage === numberOfPages ? currentPage - 2 :  currentPage + 9 %></a></li>
+              <li class="page-item"><a class="page-link" href="/usersCards?page=<%= currentPage === numberOfPages ? currentPage - 1 :  currentPage + 10 %>"><%= currentPage === numberOfPages ? currentPage - 1 :  currentPage + 10 %></a></li>
+                <% } %>
+            <% if (currentPage === numberOfPages) { %>
+              
+              <li class="page-item disabled"><a class="page-link" href="">Last</a></li>     
+            <% } %>  
+            
+            <% if (currentPage < numberOfPages) { %>
+                <li class="page-item "><a class="page-link" href="/usersCards?page=<%= numberOfPages %>">Last</a></li>
+            <% } %>  
+         
+            
+            </ul>
+    </nav>
+      </div>
+
+
+            
     
 </body>
 </html>

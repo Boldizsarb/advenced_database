@@ -1,4 +1,5 @@
 const Card = require('../models/Card');
+const bodyParser = require("body-parser");
 
 
 
@@ -20,13 +21,24 @@ exports.create =  async (req, res) =>{
 }
 
 exports.list = async(req,res)=>{
+    //pagnation
+    const perPage = 10;
+    const limit = parseInt(req.query.limit) || 10; 
+    const page = parseInt(req.query.page) || 1;
+   
+    // pagnation
+
     try{
-        //const front = await Card.find({});
-        //const back = await Card.find({});
-        //const cards = await Card.find({})
-        const cards = await Card.where('userId').equals(req.session.userID);
+        
+        const cards = await Card.where('userId').equals(req.session.userID).skip((perPage * page) - perPage).limit(perPage).exec();
+        const count = await Card.where('userId').equals(req.session.userID).count();
+        const numberOfPages = Math.ceil(count / perPage);
+
+
         res.render("usersCards", {
-            cards: cards
+            cards: cards,
+            numberOfPages: numberOfPages,
+            currentPage: page
         });
 
 
@@ -86,3 +98,6 @@ exports.update = async(req,res)=>{
         });
     }
 }
+
+
+Winter2023
