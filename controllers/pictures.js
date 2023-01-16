@@ -15,18 +15,18 @@ let storage = multer.diskStorage({
 let upload = multer({ storage: storage });
 
 
-
 const getImages = (req, res) => {
-  imgModel.find({}, (err, items) => {
-      if (err) {
-          console.log(err);
-          res.status(500).send('An error occurred', err);
-      }
-      else {
-          res.render('pictures', { items: items });
-      }
-  });
-}
+    imgModel.find({userId:req.session.userID}, (err, items) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('An error occurred', err);
+        }
+        else {
+            res.render('pictures', { items: items });
+        }
+    });
+  }
+
 
 const postImage = (req, res, next) => {
   let obj = {
@@ -44,14 +44,35 @@ const postImage = (req, res, next) => {
           console.log(err);
       }
       else {
-          res.redirect('/');
+          res.redirect('/viewPictures');
       }
   });
 }
+
+const list = async(req,res)=>{
+
+    try{
+        const items = await imgModel.where('userId').equals((req.session.userID));
+
+        res.render("viewPictures", {
+            items: items
+        });
+
+    }catch(e){
+        console.log(e.message);
+        return res.status(400).send({
+            message: JSON.parse(e),
+        
+        });
+    }
+  }
 
 
 module.exports = {
   getImages,
   postImage,
+  list,
   upload
 }
+
+

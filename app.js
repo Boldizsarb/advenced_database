@@ -20,15 +20,15 @@ const CardController = require("./controllers/cards");
 const app = express();
 app.set("view engine", "ejs");
 
-/**
- * notice above we are using dotenv. We can now pull the values from our environment
- */
+
+  // using dotenv, can now pull the values from our environment
+ 
 
 const { PORT, MONGODB_URI } = process.env;
 
-/**
- * connect to database
- */
+
+  //connect to database
+
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 mongoose.connection.on("error", (err) => {
@@ -42,9 +42,8 @@ mongoose.connection.on("error", (err) => {
 
 
 
-/***
- * We are applying our middlewear
- */
+ //middlewear
+
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -71,13 +70,16 @@ const authMiddleware = async (req, res, next) => {
 }
 
 // images
+const imgControl = require('./controllers/pictures');
 
 const router = express.Router();
 const imageController = require('./controllers/pictures');
 const { upload } = imageController;
-app.get('/image', imageController.getImages);
 
-app.post('/image', upload.single('image'), imageController.postImage);
+app.get('/viewPictures', imgControl.list);
+
+app.get('/image', imageController.getImages);
+app.post('/image', upload.single('image'), imageController.postImage); // this cant be seen without being on the same page 
 
 module.exports = router;
 
