@@ -1,6 +1,7 @@
 const imgModel = require("../models/picture");
 const bodyParser = require("body-parser");
 const path = require('path');
+const mime = require('mime-types'); // for checking the file is a pic nothing else
 
 const fs = require('fs');
 const multer = require('multer');
@@ -12,7 +13,17 @@ let storage = multer.diskStorage({
       cb(null, file.fieldname + '-' + Date.now())
   }
 });
-let upload = multer({ storage: storage });
+
+let upload = multer({
+    storage: storage,
+    fileFilter: function (req, file, cb) {
+    // Allowing only PNG, JPG and JPEG
+    if (mime.lookup(file.originalname) !== 'image/png' && mime.lookup(file.originalname) !== 'image/jpeg') {
+        return cb(new Error('Only image files are allowed!'), false);
+    }
+    cb(null, true);
+}
+});
 
 
 const getImages = (req, res) => {
@@ -67,11 +78,29 @@ const list = async(req,res)=>{
     }
   }
 
+  const remove = async(req,res)=>{
+    const id = req.params.id;
+    try{
+        await imgModel.findByIdAndRemove(id);
+        res.redirect("/viewPictures");
+
+
+
+
+    }catch (e) {
+        console.log(e.message);
+        return res.status(400).send({
+            message: JSON.parse(e),
+        
+        });
+    }}
+
 
 module.exports = {
   getImages,
   postImage,
   list,
+  remove,
   upload
 }
 

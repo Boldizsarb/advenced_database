@@ -5,30 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="viewPictures.css">
 </head>
 <body>
     <div id="header">
         <%- include('common/header'); -%> <style>#header {height: 10vh;}</style>
     </div> 
-    <h1>Uploaded Images</h1>
-    <div>
+    <h1>Picture Cards: </h1>
+    <div class="card-container">
         <% items.forEach(function(image) { %>
-        <div>
-            <div>
-                <img src="data:image/<%=image.img.contentType%>;base64,
-                     <%=image.img.data.toString('base64')%>">
-                <div>
-                    <h5><%= image.name %></h5>
-                     
-
- 
- 
- 
+            <div class="card">
+                <div class="card-front">
+                    
+                    <p><%= image.name %></p>
+                </div>
+                <div class="cardId" >
+                    <%= image.id %>
+                </div>
+                <div class="card-buttons">
+                    <a href="/viewPictures/delete/<%= image.id %>" class="delete-button">Delete</a>
+                </div>
+                <div class="card-back">
+                    <img src="data:image/<%=image.img.contentType%>;base64, <%=image.img.data.toString('base64')%>">
                 </div>
             </div>
-        </div>
         <% }) %>
     </div>
     
+    <script>
+        const cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+    card.addEventListener("click", function() {
+        this.classList.toggle("flipped");
+    });
+    });
+    </script>
 </body>
 </html>

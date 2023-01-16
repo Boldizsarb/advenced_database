@@ -79,7 +79,10 @@ const { upload } = imageController;
 app.get('/viewPictures', imgControl.list);
 
 app.get('/image', imageController.getImages);
-app.post('/image', upload.single('image'), imageController.postImage); // this cant be seen without being on the same page 
+app.post('/image', upload.single('image'), imageController.postImage); // 
+//app.get("/usersCards/delete/:id", CardController.delete);
+app.get("/viewPictures/delete/:id",imgControl.remove);
+
 
 module.exports = router;
 
@@ -90,6 +93,7 @@ app.get("/usersCards/delete/:id", CardController.delete);
 
 app.get("/usersCards/update/:id", CardController.edit);
 app.post("/usersCards/update/:id", CardController.update);
+
 
 
 app.get("/", (req, res) => {
