@@ -1,0 +1,42 @@
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 7vh;
+    height: 7vh;
+    border-radius: 50%;
+    background-color: rgb(38, 38, 198);
+    animation: fade-in-out 20s ease-in-out infinite; /* added animation */
+    box-shadow: 0 0 20px blue; /* added box-shadow */
+    transform: scale(1.1); /* added transformation */
+  }
+  
+  body::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    background-color: orange;
+    animation: fade-in-out 20s ease-in-out infinite; /* added animation */
+    box-shadow: 0 0 20px rgb(232, 152, 13); /* added box-shadow */
+    transform: scale(1.1);
+  }
+  
+  @keyframes fade-in-out {
+    0% {
+      opacity: 0;
+      transform: scale(0); 
+    }
+    50% {
+      opacity: 1;
+      transform: scale(3);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0);
+    }
+}

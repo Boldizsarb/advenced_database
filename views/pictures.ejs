@@ -23,7 +23,7 @@
             <input type="hidden" name="userId" id="userId" value= <%=user.id%>>
         
             <div>
-                <label for="image" class="upload">Upload Image</label>
+                <label for="image" class="upload">Upload Image  <sub>Images only!</sub></label>
                 <input type="file" id="image"
                        name="image" value="" required>
             </div>
@@ -36,6 +36,11 @@
 </body>
 </html>
 <style>
+    sub{
+        font-size: 0.8em;
+        padding-left: 1vh;
+        font-style: italic;
+    }
    form {
     background-color: black;
     color: white;

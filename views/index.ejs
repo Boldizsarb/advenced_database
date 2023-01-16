@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <title>Home Page</title>
 </head>
 <body>
   <div id="header">
@@ -13,13 +14,32 @@
   <% if(!user) { %> <h2>Login or Register on the top right ;) </h2> <% } %> 
 
   <p> user id: <%=user.id%></p>
+
+
+  <div class="categoryContainer">
+    <h3>Current Categories:</h3>
+    <p>You can categorize your cards, devide them into group if you like. </p>
+    <% cards.forEach(card => { %>
+    <div class="categories">
+      <a href="/category/category/<%= card.category %>" class="categoryList"><%= card.category %></a>
+      
+    </div>
+    <%  }); %>
+  </div>
   
 </body>
 </html>
 
 <style>
+  
+
+
   h2{ 
     padding: 5vh;
     text-align: center;
+  }
+  body{
+    color: white;
+    
   }
 </style>

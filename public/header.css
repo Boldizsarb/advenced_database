@@ -1,25 +1,4 @@
-
-<div class="container">
-	<p class="lead"></p>
-	<div class="header-bar">
-		<h1 class="logo">Flashy</h1>
-		<ul class="slider-menu">
-			<li><a href="/">Home</a></li>
-      <% if(user) { %>
-			<li><a href="mycards"> Add a Card</a></li>
-			<li><a href="usersCards"> My Cards</a></li>
-			<li><a href="viewPictures"> Pic cards</a></li>
-			<li><a href="image"> Upload Pic</a></li>
-			<li><a href="logout"><%= user.email %> Loggout</a></li><% } %>
-      <% if(!user) { %>
-			<li><a href="login">Login</a></li>
-			<li><a href="join">Register</a></li>
-      <% } %>
-		</ul>
-	</div>
-</div>
-<style>
-	body {
+body {
     background-color: black;
     color: white;
       }
@@ -100,6 +79,3 @@
       font-size: 1rem;
     }
   }
-</style>
-
-

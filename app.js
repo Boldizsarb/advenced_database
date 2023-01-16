@@ -40,8 +40,6 @@ mongoose.connection.on("error", (err) => {
   process.exit();
 });
 
-
-
  //middlewear
 
 app.use(express.static(path.join(__dirname, "public")));
@@ -87,16 +85,16 @@ app.get("/viewPictures/delete/:id",imgControl.remove);
 module.exports = router;
 
 //app.get("/", homeController.list);
-
-app.get("/usersCards", CardController.list);
+app.post("/addcard", CardController.create);
+app.get("/usersCards", CardController.list1);
 app.get("/usersCards/delete/:id", CardController.delete);
 
 app.get("/usersCards/update/:id", CardController.edit);
 app.post("/usersCards/update/:id", CardController.update);
 
+app.get("/category/category/:category", CardController.list2); // since it is a string we need to specify what that is! 
 
-
-app.get("/", (req, res) => {
+app.get("/", CardController.list3, (req, res) => {
   res.render('index', { errors: {} })    
 });
 
@@ -111,7 +109,7 @@ app.get("/mycards", (req, res) => {
 });
 
 
-app.post("/addcard", CardController.create);
+
 
 
 

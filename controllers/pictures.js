@@ -14,7 +14,7 @@ let storage = multer.diskStorage({
   }
 });
 
-let upload = multer({
+let upload = multer({  // if the file is not a pic then an error will be thrown 
     storage: storage,
     fileFilter: function (req, file, cb) {
     // Allowing only PNG, JPG and JPEG
