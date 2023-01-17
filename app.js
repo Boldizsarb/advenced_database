@@ -92,7 +92,10 @@ app.get("/usersCards/delete/:id", CardController.delete);
 app.get("/usersCards/update/:id", CardController.edit);
 app.post("/usersCards/update/:id", CardController.update);
 
-app.get("/category/category/:category", CardController.list2); // since it is a string we need to specify what that is! 
+//app.get("/category/category/:category", CardController.list2); // since it is a string we need to specify what that is! 
+
+app.get("/category/category/:category", CardController.list2, (req, res) => {
+  res.render('category', { cards: cards,category:category }) });
 
 app.get("/", CardController.list3, (req, res) => {
   res.render('index', { errors: {} })    

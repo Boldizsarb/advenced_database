@@ -13,7 +13,9 @@
     <div id="header">
         <%- include('common/header'); -%> 
     </div>
-    <h2><%= cards.category %></h2>
+
+    <h2 class="categoryh2"><%= cards[0].category %> :</h2>
+
     <div class="card-container">
         <% cards.forEach(card => { %>
             <div class="card">
@@ -52,6 +54,10 @@ cards1.forEach(card => {
 
 </script>
 <style>
+    .categoryh2{
+        color: white;
+        text-align: center;
+    }
     .card-container{
     padding-top: 20vh;
 }

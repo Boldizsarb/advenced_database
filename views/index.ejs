@@ -11,35 +11,53 @@
   <div id="header">
     <%- include('common/header'); -%> <style>#header {height: 10vh;}</style>
   </div>
-  <% if(!user) { %> <h2>Login or Register on the top right ;) </h2> <% } %> 
+  <% if(!user) { %> <h2>Login or Register on the top right ;) </h2> 
+    <p>The user is a crucial part of the application, without it, it will not work I am afraid!</p>
+    <div class="border2" id="no"> <style>#no{width: 100%;}</style>
+      <h3>Why a flash card aplication?</h3>
+      <p>Although in this new day and age, intelligence has begun to be measured differently other than memory banking, the underlying concepts are more important to know that remembering each word. This is mostly due to the quick availability of information of all sorts. <strrong>However</strrong>, there are some things you still need to remember from the top of your head, these can include languages, certain numerical equations and quotes or anything that you have no time to look up on your phone. Furthermore, Study shows that retrieval practice is one of the best ways to learn in general.  </p>
+    </div>
+  <% } else {%> 
 
   <p> user id: <%=user.id%></p>
 
+<div class="mainContainer">
+  <div class="border">
+    <div class="categoryContainer">
+      <h2 class="category">Current Categories:</h2>
+      <p>You can categorize your cards, devide them into group if you like. </p>
+      <% cards.forEach(card => { %>
+      <div class="categories">
 
-  <div class="categoryContainer">
-    <h3>Current Categories:</h3>
-    <p>You can categorize your cards, devide them into group if you like. </p>
-    <% cards.forEach(card => { %>
-    <div class="categories">
-      <a href="/category/category/<%= card.category %>" class="categoryList"><%= card.category %></a>
-      
+        <a href="/category/category/<%= card.category %>" class="categoryList"><%= card.category %></a>
+        
+      </div>
+      <%  }); %>
     </div>
-    <%  }); %>
   </div>
-  
+
+  <div class="border2">
+    <h3>Why a flash card aplication?</h3>
+    <p>Although in this new day and age, intelligence has begun to be measured differently other than memory banking, the underlying concepts are more important to know that remembering each word. This is mostly due to the quick availability of information of all sorts. <strrong>However</strrong>, there are some things you still need to remember from the top of your head, these can include languages, certain numerical equations and quotes or anything that you have no time to look up on your phone. Furthermore, Study shows that retrieval practice is one of the best ways to learn in general.  </p>
+  </div>
+</div>
+  <% } %>
 </body>
 </html>
+<script>
+function applyMagnifyEffect() {
+    const categoryList = document.querySelectorAll('.categoryList');
 
-<style>
-  
+    categoryList.forEach((category) => {
+        category.addEventListener('mouseover', () => {
+            category.style.transform = 'scale(1.5)';
+        });
+        category.addEventListener('mouseout', () => {
+            category.style.transform = 'scale(1)';
+        });
+    });
+}
 
+document.addEventListener('DOMContentLoaded', applyMagnifyEffect);
+</script>
 
-  h2{ 
-    padding: 5vh;
-    text-align: center;
-  }
-  body{
-    color: white;
-    
-  }
-</style>

@@ -58,8 +58,8 @@ exports.list2 = async(req,res)=>{ // once we have the cetegories
     console.log(category);
 try{
     //const cards = await Card.where('userId').equals(userId)//.where('category').equals(category)
-    const cards = await Card.find({userId: userId}).distinct("category")
-    //const cards = await Card.find({userId: userId, category: category})
+    //const cards = await Card.find({userId: userId}).distinct("category")
+    const cards = await Card.find({userId: userId, category: category})
     res.render("category", {
         cards: cards
     });
