@@ -19,7 +19,8 @@ let upload = multer({  // if the file is not a pic then an error will be thrown
     fileFilter: function (req, file, cb) {
     // Allowing only PNG, JPG and JPEG
     if (mime.lookup(file.originalname) !== 'image/png' && mime.lookup(file.originalname) !== 'image/jpeg') {
-        return cb(new Error('Only image files are allowed!'), false);
+        return cb(new Error('Only image files are allowed!'), false)
+        
     }
     cb(null, true);
 }

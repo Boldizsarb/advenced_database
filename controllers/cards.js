@@ -112,7 +112,7 @@ exports.delete = async(req,res)=>{
 exports.edit = async(req,res)=>{
     const id = req.params.id;
     try{
-            const cards = await Card.findById(id);
+            const cards = await Card.findOne({_id: id});
             res.render("editingCard", {cards: cards, id:id})
 
 
@@ -141,3 +141,29 @@ exports.update = async(req,res)=>{
     }
 }
 
+// post search 
+exports.search = async(req,res)=>{
+
+    const userId = req.session.userID
+    const search = req.body.search;
+    console.log(search);
+    try{
+        const cards = await Card.find({
+            userId: userId,
+            $or: [
+                {front: {$regex: search, $options: 'i'}},
+                {back: {$regex: search, $options: 'i'}}
+            ]
+        })
+        res.render("search", {
+            cards: cards
+        });
+
+
+    }catch(e){
+        console.log(e.message);
+        return res.status(400).send({
+            message: JSON.parse(e),
+        
+        });
+}}

@@ -19,7 +19,7 @@
     </div>
   <% } else {%> 
 
-  <p> user id: <%=user.id%></p>
+  <!--<p> user id: <%=user.id%></p> -->
 
 <div class="mainContainer">
   <div class="border">
@@ -41,6 +41,17 @@
     <p>Although in this new day and age, intelligence has begun to be measured differently other than memory banking, the underlying concepts are more important to know that remembering each word. This is mostly due to the quick availability of information of all sorts. <strrong>However</strrong>, there are some things you still need to remember from the top of your head, these can include languages, certain numerical equations and quotes or anything that you have no time to look up on your phone. Furthermore, Study shows that retrieval practice is one of the best ways to learn in general.  </p>
   </div>
 </div>
+<div class="border3">
+  <div class="search">
+    <p id="searchp">Search amongst your cards:</p>
+    <form action="/search" method="POST">
+      <label for="search"></label>
+      <input type="text" placeholder="Search" name="search" required>
+      <button type="submit">Search</button>
+    </form>
+  </div>
+
+</div>
   <% } %>
 </body>
 </html>
@@ -57,7 +68,10 @@ function applyMagnifyEffect() {
         });
     });
 }
-
 document.addEventListener('DOMContentLoaded', applyMagnifyEffect);
 </script>
+<style>
+
+
+</style>
 

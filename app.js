@@ -94,6 +94,10 @@ app.post("/usersCards/update/:id", CardController.update);
 
 //app.get("/category/category/:category", CardController.list2); // since it is a string we need to specify what that is! 
 
+
+app.post("/search",CardController.search) // search
+
+
 app.get("/category/category/:category", CardController.list2, (req, res) => {
   res.render('category', { cards: cards,category:category }) });
 
