@@ -30,7 +30,7 @@ exports.list1 = async(req,res)=>{
 
     try{
         
-        const cards = await Card.where('userId').equals(req.session.userID).skip((perPage * page) - perPage).limit(perPage).exec();
+        const cards = await Card.where('userId').equals(req.session.userID).sort({updatedAt: -1}).skip((perPage * page) - perPage).limit(perPage).exec();
         const count = await Card.where('userId').equals(req.session.userID).count();
         const numberOfPages = Math.ceil(count / perPage);
 
@@ -128,6 +128,7 @@ exports.edit = async(req,res)=>{
 exports.update = async(req,res)=>{
     const id = req.params.id;
     try{
+            req.body.updatedAt = Date.now();
             const cards = await Card.updateOne({_id: id}, req.body)
             res.redirect("/usersCards")
 

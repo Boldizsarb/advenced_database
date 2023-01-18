@@ -13,8 +13,8 @@
     </div>
       <% if(!user) { %> <h2>Login or Register on the top right ;) </h2> <% } %> 
       <% if(user){ %> 
-    
-      <p> user id: <%=user.id%></p>
+    <br><br><br><br>
+      
     <form method="POST" action="/addcard">
         <label for="front">Front:</label>
         <input type="text" name="front" id="front"  placeholder="Front of the Card">

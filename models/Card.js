@@ -8,7 +8,7 @@ const cardSchema = new Schema(
         category:{type:String},
         userId:{type: String, required: [true, "User Id needed. Login first!"]},
         createdAt:{type:Date, immutable: true, default:()=>Date.now(),}, // wont let modify
-        updatedAt:{type:Date, immutable: true, default:()=>Date.now(),}
+        updatedAt:{type:Date, default:()=>Date.now(),}
     },
     { timestamps: true }
 );

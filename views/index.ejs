@@ -11,6 +11,7 @@
   <div id="header">
     <%- include('common/header'); -%> <style>#header {height: 10vh;}</style>
   </div>
+  <br><br>
   <% if(!user) { %> <h2>Login or Register on the top right ;) </h2> 
     <p>The user is a crucial part of the application, without it, it will not work I am afraid!</p>
     <div class="border2" id="no"> <style>#no{width: 100%;}</style>
@@ -43,7 +44,7 @@
 </div>
 <div class="border3">
   <div class="search">
-    <p id="searchp">Search amongst your cards:</p>
+    <p id="searchp">Search among your cards:</p>
     <form action="/search" method="POST">
       <label for="search"></label>
       <input type="text" placeholder="Search" name="search" required>
@@ -70,8 +71,5 @@ function applyMagnifyEffect() {
 }
 document.addEventListener('DOMContentLoaded', applyMagnifyEffect);
 </script>
-<style>
 
-
-</style>
 
