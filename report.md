@@ -6,6 +6,9 @@ My application offers a solution to both of these problems, let alone the great 
  The database of choice was the non-relational database, also called NoSQL MongoDB. The underlying reason is the many advantages of NoSQL, one of the key points of which is scalability. NoSQL engines are built to scale up and take use of cloud computing. When we scale out or horizontally, we add resources to a single node (a computer or server). We can run a single database on several nodes. We can easily add and remove nodes when we scale out. As a result, NoSQL is an excellent choice for the cloud. It can be utilising the scalability of the cloud benefits since it can expand out.
 Another important aspect is the performance and flexibility, being not constrained to pre-defined rules (Integrant 2021) and enabling to creation of different data types or entries to the database on the fly. 
 The models and design of the content of the database as well as the controllers to govern the data were done by using mongoose. 
+System diagram of collaborative effort of the the whole MVC structure. 
+![Alt Text](/public/images/system%20diagram.jpg)
+
 ## Users:
 Starting with the users is a crucial part of the application since all users have their very own custom-designed data without having access to someone else's.  The users can log in or register. In the case of a register, the program uses the hashing algorithm bcrypt that turns the password into a long string before uploading that into the database.  After login, the id of the user is stored in a session variable that enables access to each controller. 
 ![Alt Text](/public/images/login.jpg)
@@ -34,3 +37,28 @@ Next is the Pic Cards,  where all the cards containing a picture on the back get
 ![Alt Text](/public/images/picture%20cards.jpg)
 The creation of the cards with a picture on them happens on the Upload pic. When uploading mime type makes sure that the uploaded file is an image, preventing any other type of file to enter the file system or the database (Webplatform.org 2003). 
 ![Alt Text](/public/images/uploading%20a%20pic.jpg)
+
+# Key decisions: 
+## Database Design: 
+The whole application runs on one mongo database and three collections featuring the cards, images and users. 
+
+Users:
+The collection consists of the following values.
+![Alt Text](/public/images/users%20collection.jpg)
+The id plays a crucial role since it is passed to each card that the user creates, enabling the whole application to be user-specific! Emails and password for validation. Note that the password is in the already hashed form.  
+The class diagram demonstrates the relation between the collections.  
+![Alt Text](/public/images/class%20diagramm.jpg)
+
+Cards: 
+![Alt Text](/public/images/cards%20collection%20.jpg)
+Each card document has its front and back values that are compulsory and the hidden populated userId that again allow the entire program to be user-specific. Then comes the time of creation and update. Note that whenever a card gets updated it becomes the first in the My Card view. Lastly, the optional category value enables the user to aggregate all the cards within a certain subject. 
+
+Images: 
+![Alt Text](/public/images/images%20collection%20.jpg)
+The document is similar to the text cards, each contains a front or name in this case the userId to personalise it and lastly the Bin Data representation of the image as well. 
+
+## Security and Scalability
+Although the whole application is built on personal data, the only sensitive data is the email address and password. Hence the password only enters the database in a hashed format, which was made possible by using Bcrypt. Bcrypt uses a 128-bit salt and encrypts a 192-bit magic value (Usenix 2008). Although it is not the safest option out there, it sure makes the attacks and brute force guessing hard (Compose 2016). Nonetheless, the security could be improved in any way by using biometric and or multi-factor authentication or outsourcing the login/signup process to bigger companies like google (login radius 2020). Besides this, as mentioned already all created or uploaded data is user-specific, so the only person who has access to them is the person who created them. 
+
+## Scalability
+Scalability is the ability to extend or contract the capacity of system resources to accommodate your application's changing use. This can relate to both growing and declining application utilisation (MongoDB 2021). In terms of scalability, our application's MongoDB database is already sharded horizontally over three nodes inside our Europian Union deployment area. By dividing our data over different nodes, sharding improves database throughput. However, this is not the only way our database may be scaled. Vertical scaling refers to increasing the processing power of a single server or cluster. Both relational and non-relational databases can scale up, but eventually, there will be a limit in terms of maximum processing power and throughput (MongoDB 2021b). Historically, database scalability has been a key setback for big systems or applications with above-average throughput, with choices either restricted in number or prohibitively expensive to execute.MongoDB, on the other hand, provides a comprehensive set of scalability options .
