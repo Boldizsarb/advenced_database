@@ -28,11 +28,11 @@
       <h2 class="category">Current Categories:</h2>
       <p>You can categorize your cards, devide them into group if you like. </p>
       
-        <select name="categories">
-          <% categories.forEach(function(category) { %>
-            <option value="<%= category._id %>"><%= category._id %></option>
-          <% }); %>
-        </select>
+      <ul>
+        <% categories.forEach(function(category) { %>
+          <li><a href="/category/category/<%= category._id %>"><%= category._id %></a></li>
+        <% }); %>
+      </ul>
       
     </div>
   </div>

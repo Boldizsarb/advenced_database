@@ -77,6 +77,7 @@ try{
 exports.list3 = async(req,res)=>{
     const userId = req.session.userID
     try{
+
         const distinctCategories = await Card.aggregate([
             {
                 $match: { userId: userId }
@@ -90,6 +91,7 @@ exports.list3 = async(req,res)=>{
         res.render("index", {
             categories: distinctCategories
         });
+        
 
     }catch(e){
         console.log(e.message);
