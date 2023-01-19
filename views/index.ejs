@@ -51,25 +51,35 @@
       <button type="submit">Search</button>
     </form>
   </div>
-
 </div>
+
+
+
+<button id="show-banner-button">Guide Me</button>
+<div id="banner" style="display: none;">
+  <button id="close-banner-button">X</button>
+  <p id="content">Banner Content
+    aklsdjfklashjfiolashfadgaedrgaergaergaerg
+  </p>
+</div>
+
   <% } %>
 </body>
 </html>
+
 <script>
-function applyMagnifyEffect() {
-    const categoryList = document.querySelectorAll('.categoryList');
+const showBannerButton = document.getElementById("show-banner-button");
+const closeBannerButton = document.getElementById("close-banner-button");
+const banner = document.getElementById("banner");
 
-    categoryList.forEach((category) => {
-        category.addEventListener('mouseover', () => {
-            category.style.transform = 'scale(1.5)';
-        });
-        category.addEventListener('mouseout', () => {
-            category.style.transform = 'scale(1)';
-        });
-    });
-}
-document.addEventListener('DOMContentLoaded', applyMagnifyEffect);
+showBannerButton.addEventListener("click", function() {
+  banner.style.display = "block";
+  document.body.classList.add("white-background");
+});
+
+closeBannerButton.addEventListener("click", function() {
+  banner.style.display = "none";
+  document.body.classList.remove("white-background");
+});
 </script>
-
 
