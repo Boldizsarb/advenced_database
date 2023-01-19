@@ -27,13 +27,13 @@
     <div class="categoryContainer">
       <h2 class="category">Current Categories:</h2>
       <p>You can categorize your cards, devide them into group if you like. </p>
-      <% cards.forEach(card => { %>
-      <div class="categories">
-
-        <a href="/category/category/<%= card.category %>" class="categoryList"><%= card.category %></a>
-        
-      </div>
-      <%  }); %>
+      
+        <select name="categories">
+          <% categories.forEach(function(category) { %>
+            <option value="<%= category._id %>"><%= category._id %></option>
+          <% }); %>
+        </select>
+      
     </div>
   </div>
 

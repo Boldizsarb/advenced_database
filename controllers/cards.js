@@ -60,6 +60,7 @@ try{
     //const cards = await Card.where('userId').equals(userId)//.where('category').equals(category)
     //const cards = await Card.find({userId: userId}).distinct("category")
     const cards = await Card.find({userId: userId, category: category})
+    ///const cards = await Card.distinct({userId: userId, category: category})
     res.render("category", {
         cards: cards
     });
@@ -73,25 +74,30 @@ try{
     }
 }
 
-exports.list3 = async(req,res)=>{    // index
-
-    const cards = await Card.where('userId').equals(req.session.userID)
+exports.list3 = async(req,res)=>{
+    const userId = req.session.userID
     try{
-
+        const distinctCategories = await Card.aggregate([
+            {
+                $match: { userId: userId }
+            },
+            {
+                $group: {
+                    _id: "$category"
+                }
+            }
+        ]).exec();
         res.render("index", {
-            cards: cards
-            
+            categories: distinctCategories
         });
 
     }catch(e){
         console.log(e.message);
         return res.status(400).send({
             message: JSON.parse(e),
-        
         });
     }
 }
-
 
 exports.delete = async(req,res)=>{
     const id = req.params.id;
