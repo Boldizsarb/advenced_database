@@ -27,7 +27,7 @@ let upload = multer({  // if the file is not a pic then an error will be thrown
 });
 
 
-const getImages = (req, res) => {
+const getImages = async (req, res) => {
     imgModel.find({userId:req.session.userID}, (err, items) => {
         if (err) {
             console.log(err);
@@ -40,7 +40,7 @@ const getImages = (req, res) => {
   }
 
 
-const postImage = (req, res, next) => {
+const postImage = async(req, res, next) => {
   let obj = {
       name: req.body.name,
       //desc: req.body.desc, taken out 
