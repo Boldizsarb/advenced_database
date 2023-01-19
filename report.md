@@ -1,3 +1,19 @@
+Work of Boldizsar Banfia
+Student number: 15363236
+Flash Card Application:
+Flashy
+
+Git Repo:
+https://github.com/Boldizsarb/advenced_database
+
+
+Deployed at: 
+https://odd-jeans-hare.cyclic.app/
+
+too look at pictures please use account:
+example@example.com
+pw: example
+
 # Introduction 
 As a not native English speaker, upon arrival to the country I had to teach myself in English since I had not spoken a word before. During my research, seeking the most efficient way to learn it, I came across various techniques. Multiple high volume study shows that besides many factors including habit, lifestyle and attitude, one of the best methods to memorise anything is the retrieval practice with high repetition (FutureLearn 2022). Flash Cards are a very good representation of this. The hard part is to find the right one, since most are pre-written and cost a fortune. 
 My application offers a solution to both of these problems, let alone the great accessibility on the web on any device. There are no pre-written cards, it let the user customize their cards without worrying about the learning curb or having to study something that they potentially would never use. The application is not subject-bound, the only limit is the imagination of the user. 
@@ -39,6 +55,8 @@ The creation of the cards with a picture on them happens on the Upload pic. When
 ![Alt Text](/public/images/uploading%20a%20pic.jpg)
 
 # Key decisions: 
+# MVC Stack
+![Alt Text](/public/images/MVC%20file%20structure.jpg)
 ## Database Design: 
 The whole application runs on one mongo database and three collections featuring the cards, images and users. 
 
@@ -66,6 +84,8 @@ Scalability is the ability to extend or contract the capacity of system resource
 # Conclusion and Reflection
 This project is very dear to me, and the concept has profoundly helped my life was brought into life. No need to mention that if I made a flash card application, this is what it would look like. Nonetheless, due to insufficient time, the application is only a proof of concept. If I had to quantify the process, I would say around 30-35, 40% of the original plan is left to be implemented. It has its limitations. The GUI, even though every bit of it is custom and handmade, the responsiveness on smaller devices leave room for improvement. The user database could be expanded with the customer name to further tailor it to the comfort of the user. One point that is sort of obvious and will be rectified in the near future, is the mechanic of the cards with a picture on them. In their current state, the normal text cards and the ones with images do not mingle, completely separated. That will be changed, but it requires time! Another feature in mind that will be added later on to it, is a grading system for each card, where the user can grade himself based on his knowledge, which allows him to retrieve his performance and gives him a clear picture of where to make improvements and what areas are his strength. If had an opportunity to start over, probably I would prioritise the grading system over the layout of the application. 
 Overall, while significant progress has been made, there is still work to be done to bring the flashcard application to its full potential. Many conceptual targets were hit, and the application is fully mutable by any user and every bit of data will remain his/her digital property. Flashy does not depend on data to be useful, and though it could later be monetized it is not only a product but a tool whose degree of usefulness solely depends on the user. In its current state perfectly represent a working beta, with a clear picture of what it will be like once it is done! 
+# cyclic would not let write to server
+Fatal error in cyclic!!! After deploying the application uploading any file or picture will result in an error in the deployed version due to the incapability of cyclic of writing to the server any kind of static asset. It is not only immensely slow but limited! As, requested in teams the showcase that the application actually is working fine in local plus the picture upload. 
 
 # References 
 COMPOSE, 2016. You May Get Pwned! At Least Protect Passwords with Bcrypt. [online] [viewed 18 Jan 2023]. Available from: https://www.compose.com/articles/you-may-get-pwned-at-least-protect-passwords-with-bcrypt/FUTURELEARN, 2022. Top 10 Study Tips for Effective Learning [online] Available from: https://www.futurelearn.com/info/blog/top-study-tips-for-effective-learningGEEKS FOR GEEKS, 2021. Benefit of Using MVC [online] Available from: https://www.geeksforgeeks.org/benefit-of-using-mvc/HELLER, M., 2020. What Is Node.js? The JavaScript Runtime Explained [online] Available from: https://www.infoworld.com/article/3210589/what-is-nodejs-javascript-runtime-explained.htmlINTEGRANT, 2021. When to Use SQL vs. NoSQL [online] Available from: https://integrant.com/blog/when-to-use-sql-vs-nosql/LOGINRADIUS, 2020. Login Security: 7 Best Practice for Online Security | LoginRadius Blog [online] Available from: https://blog.loginradius.com/identity/login-security/MONGODB, 2021a. How to Scale MongoDB [online] Available from: https://www.mongodb.com/basics/scalingMONGODB, 2021b. How to Scale MongoDB [online] Available from: https://www.mongodb.com/basics/scalingNPM, 2019. Multer [online] Available from: https://www.npmjs.com/package/multerSIX BENEFITS OF USING MVC MODEL FOR EFFECTIVE WEB APPLICATION DEVELOPMENT, 2016. Six Benefits of Using MVC Model for Effective Web Application Development [online] Available from: https://www.brainvire.com/six-benefits-of-using-mvc-model-for-effective-web-application-development/USENIX, 2008. Bcrypt Algorithm [online] [viewed 12 Jul 2022]. Available from: https://www.usenix.org/legacy/publications/library/proceedings/usenix99/full_papers/provos/provos_html/node5.htmlWEBPLATFORM.ORG, 2003. Introduction to MIME Types · WebPlatform Docs [online] [viewed 18 Jan 2023]. Available from: https://webplatform.github.io/docs/concepts/Internet_and_Web/mime_types/#:~:text=MIME%20types%20enable%20browsers%20to
