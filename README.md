@@ -3,7 +3,7 @@
 To run locally, clone the repository, in a new terminal
 -npm install 
 -npm init -y 
-Then tupe node app
+Then type node app
 Enjoy!
 
 All dependencies: 
